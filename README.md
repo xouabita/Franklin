@@ -20,3 +20,11 @@ $ npm install -g jake
 $ npm install -g nodewebkit
 $ npm install
 ```
+
+### Build the application
+
+```bash
+$ jake build
+```
+
+The result is in ./build/app.nw
