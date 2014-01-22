@@ -16,7 +16,7 @@ $ cd Franklin
 ### Install dependencies
 
 ```bash
-	npm install -g jake
-	npm install -g nodewebkit
-	npm install
+$ npm install -g jake
+$ npm install -g nodewebkit
+$ npm install
 ```
