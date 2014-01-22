@@ -21,6 +21,8 @@ $ npm install -g nodewebkit
 $ npm install
 ```
 
+## Jake Tasks
+
 ### Build the application
 
 ```bash
@@ -28,3 +30,9 @@ $ jake build
 ```
 
 The result is in ./build/app.nw
+
+### Run the application
+
+```bash
+$ jake run
+```
