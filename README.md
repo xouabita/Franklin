@@ -8,11 +8,15 @@ post writing.
 
 ### Clone the repo
 
-	git clone https://github.com/xouabita/Franklin.git Franklin
-	cd Franklin
+```bash
+$ git clone https://github.com/xouabita/Franklin.git Franklin
+$ cd Franklin
+```
 
 ### Install dependencies
-	
+
+```bash
 	npm install -g jake
 	npm install -g nodewebkit
 	npm install
+```
