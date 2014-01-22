@@ -19,16 +19,16 @@ function makeZip(dir, zip) {
 					break;
 				case "stylus":
 					// Stylus Render
-					var styl = fs.openSync(real, 'r');
-					var out  = file.substr(0, file.lastIndexOf('.')) + ".stylus";
-					stylus.render(styl, {}, function(err, css) {
+					var styl = fs.readFileSync(real, 'utf-8');
+					var out  = file.substr(0, file.lastIndexOf('.')) + ".css";
+					stylus.render(styl, {filename : 'nesting.css'}, function(err, css) {
 						if (err) throw err;
 						zip.file(out, css);
 					});
 					break;
 				default:
 					// Just add the file to the zip
-					var data = fs.openSync(real, 'r');
+					var data = fs.readFileSync(real, 'utf-8');
 					zip.file(file, data);
 					break;
 			}
@@ -38,10 +38,17 @@ function makeZip(dir, zip) {
 	});
 }
 
+/*************************************
+ ************** Tasks ****************
+ *************************************/
+
 desc('Build the src folder into .nw');
 task('build', function (params) {
 	var zip  = new JSZip();
 	makeZip('./src/', zip);
-	var data = zip.generate();
-	fs.writeFileSync('test.zip', data, 'binary');
+	var data = zip.generate({base64:false,compression:'DEFLATE'});
+	if (!fs.existsSync('./build')) {
+		fs.mkdirSync('./build');
+	}
+	fs.writeFileSync('./build/app.nw', data, 'binary');
 });
