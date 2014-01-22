@@ -52,3 +52,10 @@ task('build', function (params) {
 	}
 	fs.writeFileSync('./build/app.nw', data, 'binary');
 });
+
+desc('Run the application');
+task('run', ['build'], function (params) {
+	jake.exec(['nodewebkit build/app.nw'], {}, function () {
+		complete();
+	});
+});
