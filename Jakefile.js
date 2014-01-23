@@ -4,6 +4,21 @@ var jade   = require('jade');
 var stylus = require('stylus');
 var path   = require('path');
 
+function rm_rf (dir) {
+	var list = fs.readdirSync(dir);
+	list.forEach( function (elem) {
+		var filename = path.join(dir, elem);
+		var stat     = fs.statSync(filename);
+		if (filename == "." || filename == ".." ) {}
+		else if (stat.isDirectory()) {
+			rm_rf(filename);
+		} else {
+			fs.unlinkSync(filename);
+		}
+	});
+	fs.rmdirSync(dir);
+}
+
 function makeZip(dir, zip) {
 	var files = fs.readdirSync(dir);
 	files.forEach(function (file) {
@@ -59,3 +74,9 @@ task('run', ['build'], function (params) {
 		complete();
 	});
 });
+
+desc('Delete build files');
+task('clean', function (params) {
+	if (fs.existsSync('./build'))
+		rm_rf('./build');
+}) 
