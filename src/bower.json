@@ -1,8 +1,0 @@
-{
-	"name": "Franklin",
-	"version": "0.0.1",
-	"dependencies": {
-		"jquery": "latest",
-		"keypress": "https://github.com/dmauro/Keypress.git"
-	}
-}
