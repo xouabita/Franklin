@@ -19,6 +19,8 @@ $ cd Franklin
 $ npm install -g jake
 $ npm install -g nodewebkit
 $ npm install
+$ cd src
+$ bower install
 ```
 
 ## Jake Tasks
