@@ -28,9 +28,11 @@ function makeZip(dir, zip) {
 			switch (file.split('.').pop()) {
 				case "jade":
 					// Jade Render
-					var html = jade.renderFile(real, {});
-					var out  = file.substr(0, file.lastIndexOf('.')) + ".html";
-					zip.file(out, html);
+					jade.renderFile(real, {}, function (err, html) {
+						if (err) { console.log(err); throw err; }
+						var out  = file.substr(0, file.lastIndexOf('.')) + ".html";
+						zip.file(out, html);
+					});
 					break;
 				case "stylus":
 					// Stylus Render
