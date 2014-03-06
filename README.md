@@ -38,3 +38,7 @@ The result is in ./build/app.nw
 ```bash
 $ jake run
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/xouabita/franklin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
